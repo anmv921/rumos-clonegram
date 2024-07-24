@@ -51,4 +51,8 @@ class User extends Authenticatable
             Profile::class
         );
     }
+
+    public function posts() {
+        return $this->hasMany( Post::class );
+    }
 }

@@ -86,7 +86,8 @@
                                 accept="image/jpeg, image/webp">
 
                                 @error('picture')
-                                    <span class="invalid-feedback" role="alert">
+                                    {{-- class="invalid-feedback" --}}
+                                    <span  role="alert">
                                         <strong>{{ $message }}</strong>
                                     </span>
                                 @enderror

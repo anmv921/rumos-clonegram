@@ -5,7 +5,7 @@
     <div class="row justify-content-center">
         
         <div class="col-md-3 me-5">
-            <img class="w-100 rounded-circle"
+            <img class="w-100 h-75 rounded-circle"
             src="{{ Auth::user()->profile->picture }}"
             alt="">
         </div>

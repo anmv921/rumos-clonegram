@@ -26,7 +26,7 @@ class ProfileController extends Controller
      */
     public function create()
     {
-        //
+        // return view("")
     }
 
     /**
@@ -58,19 +58,29 @@ class ProfileController extends Controller
      */
     public function update(Request $request, Profile $profile)
     {
-        dd($request);
+        // dd($request);
+
+        // unlink();
 
         $data = request()->validate([
             "description" => ["required", "max:255"],
-            "website" => ["required", "max:255", "url"]
+            "website" => ["required", "max:255", "url"],
+            "picture" => ["image"]
         ]);
+
+        $imagePath = auth()->user()->profile->picture;
+
+        if(!empty($data["picture"])) {
+            $imagePath = "/storage/" . request("picture")->store("profiles", "public");
+        }
 
         auth()->user()->profile()->update([
             "description" => $data["description"],
-            "website" => $data["website"]
+            "website" => $data["website"],
+            "picture" => $imagePath
         ]);
 
-        return redirect( route("home"));
+        return redirect( route("home") );
     }
 
     /**
